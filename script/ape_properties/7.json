@@ -1,0 +1,35 @@
+{
+  "name": "CryptoApe #7",
+  "description": "CryptoApes strive to unite the BAYC and CryptoPunk communities, with randomly generated and unique artwork. We are not affiliated with Yuga Labs or Larva Labs.",
+  "image": "ipfs://QmZFnUm3bjSyEPrvxEa3fR9eUxnkfQeLmPTzDhAmCWtbMZ/7.png",
+  "dna": "d48404574c0cad9866bf5ea29527afc1ff79f3a9",
+  "edition": 7,
+  "date": 1640817733576,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Orange"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Cream"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Chill"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Robe"
+    },
+    {
+      "trait_type": "Hat",
+      "value": "Beanie"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Zombie"
+    }
+  ],
+  "compiler": "HashLips Art Engine"
+}

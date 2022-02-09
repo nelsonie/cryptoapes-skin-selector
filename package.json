@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build:mac": "npx tailwindcss -o ./dist/output.css --minify;cp ./src/index.html ./dist/index.html;gsed -i 's/\\.\\.\\/dist\\///g' ./dist/index.html",
+    "build:linux": "npx tailwindcss -o ./dist/output.css --minify;cp ./src/index.html ./dist/index.html;sed -i 's/\\.\\.\\/dist\\///g' ./dist/index.html"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18"
+  }
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoApes Background Selector</title>
+    <link href="../dist/output.css" rel="stylesheet">
+</head>
+<body class="h-full text-gray-700 bg-neutral-200/50">
+<div class="flex justify-center h-16 bg-black navbar">
+    <div class="flex items-center h-full text-lg text-white xl:text-2xl 2xl:text-3xl navbar-logo">
+        CryptoApes Background Selector
+    </div>
+</div>
+<div class="h-full max-w-screen-sm p-8 m-auto scroll-smooth bg-gray-400/20">
+    <!-- <h1 class="text-xl leading-10 text-center">Dress to impress in the metaverse.</h1> -->
+    <!-- <h2 class="text-lg leading-10 text-center">From the community for the community.</h2> -->
+
+    <form>
+        <div class="mb-4 form-group">
+            <div class="mb-2 text-lg flex justify-start">
+                <label for="nft-id" class="inline-block">Enter CRAPE ID: (Format: 0-6969)</label>
+                <span id="err-nft-id" class="invisible inline-block ml-2 text-red-600">CRAPE ID #NOT Valid</span>
+            </div>
+            <div>
+                <input type="number" id="nft-id" name="nft-id" value="1"
+                       class="block w-full px-3 py-1.5 border border-gray-300 rounded" maxlength="5" required min="1"
+                       max="6969" onblur="validateCrapeId()">
+            </div>
+        </div>
+        <div class="mb-4 form-group">
+            <label for="nft-skin" class="inline-block mb-2 text-lg">Choose skin:</label>
+            <div>
+                <select id="nft-skin" name="nft-id" class="block w-full px-3 py-1.5 border border-gray-300 rounded">
+                    <option value="https://crapes.redenvelop.app/cryptoapes/StaryNight_VanGogh/{0}.gif">
+                        StaryNight VanGogh
+                    </option>
+                    <option value="https://crapes.redenvelop.app/cryptoapes/City_Burning/{0}.gif">City Burning</option>
+                    <option value="https://crapes.redenvelop.app/cryptoapes/Pixel_Space/{0}.gif">Pixel Space</option>
+                    <option value="https://crapes.redenvelop.app/cryptoapes/Solavirus_Wallpaper/{0}.png">
+                        Solavirus Wallpaper
+                    </option>
+                    <option value="http://niftycrapes.com/lasereyes/{0}.gif">Lasereyes</option>
+                    <option value="http://niftycrapes.com/matrix/{0}.gif">Matrix</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-4 form-group">
+            <button type="button" id="nft-generate"
+                    class="block w-full px-4 py-2 text-xl text-white bg-blue-500 rounded" onclick="previewNFTImage()">
+                LFC!
+            </button>
+        </div>
+        <div class="mb-4 form-group">
+            <p class="text-center">
+                <img id="nft-preview" src="" alt="Preview" class="invisible max-w-full max-h-full m-auto">
+            </p>
+        </div>
+    </form>
+    <div class="flex justify-center">
+        <a href="https://twitter.com/nelsonie" class="w-16 h-16 bg-white rounded-full">
+            <svg class="block fill-current" data-tag="twi" data-name="Twitter" viewBox="0 0 512 512"
+                 preserveAspectRatio="xMidYMid meet">
+                <path d="M419.6 168.6c-11.7 5.2-24.2 8.7-37.4 10.2 13.4-8.1 23.8-20.8 28.6-36 -12.6 7.5-26.5 12.9-41.3 15.8 -11.9-12.6-28.8-20.6-47.5-20.6 -42 0-72.9 39.2-63.4 79.9 -54.1-2.7-102.1-28.6-134.2-68 -17 29.2-8.8 67.5 20.1 86.9 -10.7-0.3-20.7-3.3-29.5-8.1 -0.7 30.2 20.9 58.4 52.2 64.6 -9.2 2.5-19.2 3.1-29.4 1.1 8.3 25.9 32.3 44.7 60.8 45.2 -27.4 21.4-61.8 31-96.4 27 28.8 18.5 63 29.2 99.8 29.2 120.8 0 189.1-102.1 185-193.6C399.9 193.1 410.9 181.7 419.6 168.6z"></path>
+            </svg>
+        </a>
+    </div>
+    <div class="pt-5 pb-12 text-center">
+        <a href="https://mirror.xyz/xing824.eth" class="text-blue-600 underline">Xing's Mirror</a>
+    </div>
+</div>
+<script>
+    String.prototype.format = function () {
+        // store arguments in an array
+        let args = arguments
+        // use replace to iterate over the string
+        // select the match and check if related argument is present
+        // if yes, replace the match with the argument
+        return this.replace(/{([0-9]+)}/g, function (match, index) {
+            // check if the argument is present
+            return typeof args[index] == 'undefined' ? match : args[index]
+        })
+    }
+
+    function validateCrapeId() {
+        let nftId = document.getElementById('nft-id')
+        let errNftId = document.getElementById('err-nft-id')
+        let id = nftId.value
+        if (!/^[0-9]*[1-9][0-9]*$/.test(id)) {
+            errNftId.style.visibility = 'visible'
+            return false
+        }
+        let idNum = parseInt(id, 10)
+        if (isNaN(idNum) || idNum <= 0 || idNum > 6969) {
+            errNftId.style.visibility = 'visible'
+            return false
+        }
+        errNftId.style.visibility = 'hidden'
+        return true
+    }
+
+    function previewNFTImage() {
+        let nftId = document.getElementById('nft-id')
+        let nftSkin = document.getElementById('nft-skin')
+        let nftPreview = document.getElementById('nft-preview')
+        let id = nftId.value
+        if (!/^[0-9]*[1-9][0-9]*$/.test(id)) {
+            alert('Invalid id')
+            return false
+        }
+        nftPreview.src = nftSkin.value.format(id)
+        nftPreview.style.visibility = 'visible'
+    }
+</script>
+</body>
+</html>
